@@ -31,18 +31,23 @@ if upgrade:
 
 #Custom download
 while True:
-    customchoice = input('Would you like guided install or custom?(type "g" or "c")').lower()
+    customchoice = input('Would you like guided install or custom?(type "g" or "c")\n').lower()
     if customchoice == 'g':
         break
     elif customchoice == "c":
-        customcommand = input('Please type the pip command you would like to run')
+        customcommand = input('Please type the pip command you would like to run\n')
         commandlist=customcommand.lower().split()
-        for item in commandlist:
-            if item in ['python','python3','m',]:
-                commandlist.remove(item)
+        print(commandlist)
+        print(repr(commandlist[1]))
+        while True:
+            if commandlist[0] in ['python','python3','-m',]:
+                print('bitch tits')
+                commandlist.pop(0)
                 continue
-            elif item == 'pip':
-                commandlist.remove(item)
+            elif commandlist[0] == 'pip':
+                commandlist.pop(0)
+                break
+            else:
                 break
         pipmain(commandlist)
         sys.exit()
